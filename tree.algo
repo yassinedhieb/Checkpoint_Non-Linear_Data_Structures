@@ -1,0 +1,57 @@
+FUNCTION number_of_nodes(root:^BST) : INTEGER
+VAR
+    j,max:INTEGER:=0;
+BEGIN
+    IF (root<>NULl) THEN   
+     j:=j+1+number_of_nodes(root^.LC)+number_of_nodes(root^.RC);
+    END_IF
+    RETURN  j; 
+END
+FUNCTION height_of_a_tree(root:^BST) : INTEGER
+BEGIN
+    IF (root=NULl) THEN
+            RETURN -1;
+        END_IF
+    IF (root<>NULl) THEN   
+        j:=j+1
+        lh:=height_of_a_tree(root^.LC);
+        rh:=height_of_a_tree(root^.RC);
+    END_IF
+    IF (lh>lr) THEN
+        RETURN lh+1
+    ELSE
+        RETURN rh+1;
+    END_IF
+END
+FUNCTION number_of_leaves(root:^BST) : INTEGER
+BEGIN
+    IF (root=NULl) THEN
+        RETURN 0;
+    END_IF
+    IF (root^.LC=NULl && root^.RC=NULl ) THEN
+        RETURN 1;
+    END_IF
+    ELSE RETURN number_of_leaves(root^.LC)+number_of_leaves(root^.RC);
+END
+FUNCTION max_value(root:^BST) : INTEGER
+BEGIN
+    IF (root=NULl) THEN
+        return -1;
+    ELSE_IF (root^.RC=NULl) THEN
+        RETURN root.value;
+    END_IF
+    RETURN max_value(root^.RC);
+END
+FUNCTION Full_tree((root:^BST) : BOOLEAN
+BEGIN
+    IF (root = NULl) THEN
+        RETURN TRUE;
+    END_IF
+    IF (root^.RC=NULl && root^.LC=NULl) THEN
+        return TRUE;
+    END_IF
+    IF (root^.RC!=NULl && root^.LC!=NULl) THEN
+        RETURN Full_tree(root^.LC) && Full_tree(root^.RC);
+    END_IF
+    RETURN false;
+END
