@@ -13,11 +13,10 @@ BEGIN
             RETURN -1;
         END_IF
     IF (root<>NULl) THEN   
-        j:=j+1
         lh:=height_of_a_tree(root^.LC);
         rh:=height_of_a_tree(root^.RC);
     END_IF
-    IF (lh>lr) THEN
+    IF (lh>rh) THEN
         RETURN lh+1
     ELSE
         RETURN rh+1;
